@@ -1,6 +1,6 @@
 {
     "name": "@fsvreddit/fsv-devvit-web-helpers",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Helper functions and utilities for DevVit apps on Reddit",
     "main": "dist/index.js",
     "scripts": {
@@ -33,6 +33,6 @@
         "devvit"
     ],
     "peerDependencies": {
-        "@devvit/web": "^0.12.22 || ^0.13.0"
+        "@devvit/web": "^0.13.0"
     }
 }

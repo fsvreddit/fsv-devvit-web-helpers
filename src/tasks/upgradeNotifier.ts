@@ -10,7 +10,7 @@ interface AppUpdate {
 }
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-type UpgradeNotifierData = {
+export type UpgradeNotifierData = {
     settingName?: string;
     appFriendlyName?: string;
     updateSubreddit?: string;

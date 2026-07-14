@@ -1,6 +1,6 @@
 {
     "name": "@fsvreddit/fsv-devvit-web-helpers",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Helper functions and utilities for DevVit apps on Reddit",
     "main": "dist/index.js",
     "scripts": {

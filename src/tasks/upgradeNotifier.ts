@@ -32,7 +32,7 @@ export const handleUpgradeNotifier = async (c: Context) => {
         const checkForUpdates = await settings.get<boolean>(request.data.settingName);
         if (!checkForUpdates) {
             console.log("Update Checker: Upgrade notifier is disabled");
-            return;
+            return c.json<TaskResponse>({ message: "upgrade notifier: upgrade notifier is disabled" }, 200);
         }
     }
 
@@ -61,7 +61,16 @@ export const handleUpgradeNotifier = async (c: Context) => {
 
     const update = updatesForThisApp[0];
 
-    if (!lt(context.appVersion, update.version)) {
+    let newVersionAvailable: boolean;
+    try {
+        newVersionAvailable = lt(context.appVersion, update.version);
+    } catch (error) {
+        const message = error instanceof Error ? error.message : JSON.stringify(error);
+        console.error(`Update Checker: Error comparing versions: ${message}`);
+        return c.json<TaskResponse>({ message: "upgrade notifier: error comparing versions" }, 500);
+    }
+
+    if (!newVersionAvailable) {
         console.log("Update Checker: No relevant updates found");
         return c.json<TaskResponse>({ message: "upgrade notifier: no relevant updates found" }, 200);
     }

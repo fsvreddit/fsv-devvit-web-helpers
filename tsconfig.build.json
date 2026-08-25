@@ -10,5 +10,6 @@
     "compilerOptions": {
         "rootDir": "src",
         "outDir": "dist",
+        "skipLibCheck": true
     }
 }

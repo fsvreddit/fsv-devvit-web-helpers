@@ -1,7 +1,7 @@
 {
     "name": "@fsvreddit/fsv-devvit-web-helpers",
     "version": "0.1.9",
-    "description": "Helper functions and utilities for DevVit apps on Reddit",
+    "description": "Helper functions and utilities for Devvit apps on Reddit",
     "main": "dist/index.js",
     "scripts": {
         "test": "npm run test:unit",
@@ -15,7 +15,7 @@
         "url": "https://github.com/fsvreddit/fsv-devvit-web-helpers.git"
     },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
+        "access": "public"
     },
     "author": "fsv",
     "license": "BSD-3-Clause",
@@ -28,7 +28,7 @@
         "semver": "^7.8.5"
     },
     "devDependencies": {
-        "@fsvreddit/eslint-config": "github:fsvreddit/eslint-config",
+        "@fsvreddit/eslint-config": "^0.1.0",
         "@types/json2md": "^1.5.4",
         "@types/lodash-es": "^4.17.12",
         "@types/semver": "^7.7.1",

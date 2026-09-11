@@ -7,9 +7,9 @@ interface AppUpdate {
     appname: string;
     version: string;
     whatsNewBullets: string[];
+    generalNotes?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type UpgradeNotifierData = {
     settingName?: string;
     appFriendlyName?: string;
@@ -91,6 +91,12 @@ export const handleUpgradeNotifier = async (c: Context) => {
         message.push({ ul: update.whatsNewBullets });
     }
 
+    if (update.generalNotes) {
+        for (const line of update.generalNotes.split("\n").filter(line => line.trim() !== "")) {
+            message.push({ p: line });
+        }
+    }
+
     message.push({ p: `To install this update, or to disable these notifications, visit the [**${request.data.appFriendlyName ?? "App"} configuration page**](https://developers.reddit.com/r/${context.subredditName}/apps/${context.appSlug}) for /r/${context.subredditName}.` });
 
     await reddit.modMail.createModNotification({
@@ -98,6 +104,8 @@ export const handleUpgradeNotifier = async (c: Context) => {
         subject: `New update available for ${request.data.appFriendlyName ?? context.appSlug}: v${update.version}`,
         bodyMarkdown: json2md(message),
     });
+
+    await redis.set(redisKey, update.version);
 
     return c.json<TaskResponse>({ message: "upgrade notifier handled" }, 200);
 };

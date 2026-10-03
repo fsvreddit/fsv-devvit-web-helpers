@@ -130,3 +130,22 @@ export async function expireKeyAt (key: string, expireAt: Date) {
         throw new Error(`Expire time ${expireAt.toISOString()} is in the past`);
     }
 }
+
+/**
+ * Retrieves multiple keys from Redis and returns them as a record/object.
+ * @param keys The keys to retrieve.
+ * @returns {Record<string, string>} A record/object with keys and their corresponding values.
+ */
+export async function mGetAsRecord (keys: string[]): Promise<Record<string, string>> {
+    const results = await redis.mGet(keys);
+    const record: Record<string, string> = {};
+
+    keys.forEach((key, index) => {
+        const value = results[index];
+        if (value !== null) {
+            record[key] = value;
+        }
+    });
+
+    return record;
+}

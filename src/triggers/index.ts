@@ -1,2 +1,2 @@
-export * from "./duplicateTriggerMitigation.js";
+export * from "./duplicateEventMitigation.js";
 export * from "./postsAndComments.js";

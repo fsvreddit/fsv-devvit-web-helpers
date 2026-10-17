@@ -7,7 +7,7 @@ interface TriggerLockOptions {
     verboseLogs?: boolean;
 }
 
-export async function hasTriggerBeenHandled (identifier: string, opts?: TriggerLockOptions): Promise<boolean> {
+export async function hasEventBeenHandled (identifier: string, opts?: TriggerLockOptions): Promise<boolean> {
     const redisKey = `triggerLock:${identifier}`;
     const expiration = opts?.expiration ?? addDays(new Date(), 1);
 
@@ -15,4 +15,11 @@ export async function hasTriggerBeenHandled (identifier: string, opts?: TriggerL
     await expireKeyAt(redisKey, expiration);
 
     return newVal > 1;
+}
+
+/**
+ * @deprecated Use `hasEventBeenHandled` instead.
+ */
+export async function hasTriggerBeenHandled (identifier: string, opts?: TriggerLockOptions): Promise<boolean> {
+    return hasEventBeenHandled(identifier, opts);
 }

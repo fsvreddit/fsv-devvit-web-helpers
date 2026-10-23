@@ -1,5 +1,5 @@
 import { context, UserSocialLink } from "@devvit/web/server";
-import { getExtendedDevvit } from ".";
+import { getExtendedDevvit } from "./extendedDevvit.js";
 
 type UserSocialLinkResponse = Omit<UserSocialLink, "handle"> & { handle: string | null };
 

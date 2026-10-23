@@ -1,5 +1,5 @@
 import { context, Post } from "@devvit/web/server";
-import { getExtendedDevvit } from ".";
+import { getExtendedDevvit } from "./index.js";
 
 export enum CrowdControlOption {
     None = "ignore",

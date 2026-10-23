@@ -1,7 +1,8 @@
 {
     "name": "@fsvreddit/fsv-devvit-web-helpers",
-    "version": "0.2.5",
+    "type": "module",
     "description": "Helper functions and utilities for Devvit Web apps on Reddit",
+    "version": "0.2.6",
     "main": "dist/index.js",
     "scripts": {
         "lint": "eslint . --ext .ts",
@@ -26,12 +27,12 @@
         "semver": "^7.8.5"
     },
     "devDependencies": {
-        "@fsvreddit/eslint-config": "^0.1.0",
+        "@fsvreddit/eslint-config": "^0.1.2",
         "@types/json2md": "^1.5.4",
         "@types/lodash-es": "^4.17.12",
         "@types/semver": "^7.7.1",
         "eslint": "^10.0.2",
-        "typescript": "^5.8.3"
+        "typescript": "^6.0.3"
     },
     "keywords": [
         "reddit",

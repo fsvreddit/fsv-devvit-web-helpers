@@ -1,6 +1,6 @@
 import { context, User } from "@devvit/web/server";
 import { UserAboutResponse } from "@devvit/protos/types/devvit/plugin/redditapi/users/users_msg.js";
-import { getExtendedDevvit } from ".";
+import { getExtendedDevvit } from "./extendedDevvit.js";
 
 async function getRawUserData (username: string): Promise<UserAboutResponse | undefined> {
     let userAboutResponse: UserAboutResponse | undefined;

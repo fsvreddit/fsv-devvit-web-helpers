@@ -1,6 +1,6 @@
 import { redis } from "@devvit/web/server";
-import { addDays } from "date-fns";
-import { expireKeyAt } from "../redis";
+import { addHours } from "date-fns";
+import { expireKeyAt } from "../redis/index.js";
 
 interface TriggerLockOptions {
     expiration?: Date;
@@ -9,7 +9,7 @@ interface TriggerLockOptions {
 
 export async function hasEventBeenHandled (identifier: string, opts?: TriggerLockOptions): Promise<boolean> {
     const redisKey = `triggerLock:${identifier}`;
-    const expiration = opts?.expiration ?? addDays(new Date(), 1);
+    const expiration = opts?.expiration ?? addHours(new Date(), 6);
 
     const newVal = await redis.incrBy(redisKey, 1);
     await expireKeyAt(redisKey, expiration);

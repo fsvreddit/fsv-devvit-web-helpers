@@ -2,7 +2,7 @@
     "name": "@fsvreddit/fsv-devvit-web-helpers",
     "type": "module",
     "description": "Helper functions and utilities for Devvit Web apps on Reddit",
-    "version": "0.2.6",
+    "version": "0.2.7",
     "main": "dist/index.js",
     "scripts": {
         "lint": "eslint . --ext .ts",

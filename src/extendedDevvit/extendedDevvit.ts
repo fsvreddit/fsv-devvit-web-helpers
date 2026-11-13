@@ -110,10 +110,6 @@ export async function getRawSubredditData (subredditName: string, metadata: prot
     return getExtendedDevvit().redditAPIPlugins.Subreddits.SubredditAbout({ subreddit: subredditName }, metadata);
 }
 
-export async function setVote (id: string, dir: 1 | 0 | -1, metadata: protos.Metadata): Promise<void> {
-    await getExtendedDevvit().redditAPIPlugins.LinksAndComments.Vote({ id, dir }, metadata);
-}
-
 export async function getRawUserWhereData (userWhereRequest: GetSubredditUsersByTypeOptions, fetchOptions: ListingFetchOptions, metadata: protos.Metadata): Promise<protos.Listing> {
     return getExtendedDevvit().redditAPIPlugins.Subreddits.AboutWhere({
         where: userWhereRequest.type,
